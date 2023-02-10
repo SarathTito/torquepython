@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<header class="bg-light" style="position: fixed;width:100%;z-index:1;">
+    <div class="row">
+        <div class="col-md-6 col-9 p-3 pl-5">
+            <h2>Torque Wedding Company</h2>
+        </div>
+        <div class="col-md-6 col-3 my-auto">
+            <nav class="navbar navbar-expand-lg navbar-light">
+  <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav  ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'torqueapp:index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#projects-section">Projects</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#packages-section">Packages</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#contact-section">Contact</a>
+      </li>
+
+
+
+    </ul>
+  </div>
+</nav>
+        </div>
+    </div>
+</header>
+
+
+
+<section id="home-section" style="padding-top:8em;">
+    <div class="container" >
+        <div class="row">
+
+<div class="slider">
+    <div class="slides">
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <input type="radio" name="radio-btn" id="radio4">
+
+
+
+        <div class="slide first">
+            <img class="my_image my_image_padding" src="{% static 'img/tor1.jpg' %}" alt="" width="1150px;">
+        </div>
+        <div class="slide">
+           <img class="my_image my_image_padding" src="{% static 'img/tor5.jpg' %}" alt="" width="150px;">
+        </div>
+        <div class="slide">
+            <img class="my_image my_image_padding" src="{% static 'img/tor3.jpg' %}" alt="" width="1150px;">
+        </div>
+        <div class="slide">
+            <img class="my_image my_image_padding" src="{% static 'img/tor6.jpg' %}" alt="" width="1150px;">
+        </div>
+
+
+        <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+        </div>
+
+
+    </div>
+
+    <div class="navigation-manual">
+    <label for="radio1" class="manual-btn"></label>
+    <label for="radio2" class="manual-btn"></label>
+    <label for="radio3" class="manual-btn"></label>
+    <label for="radio4" class="manual-btn"></label>
+    </div>
+
+</div>
+            </div>
+        </div>
+</div>
+
+<script type="text/javascript">
+    var counter = 1;
+    setInterval(function(){
+    document.getElementById('radio' + counter).checked = true;
+    counter++;
+    if(counter > 4){
+    counter =1;
+    }
+    },5000);
+</script>
+</section>
+
+
+<section class="bg-light p-5" id="projects-section">
+    <div class="container">
+        <h1 class="text-center">PHOTOGRAPHY WORK</h1>
+        <div class="row">
+            {% for i in func %}
+            <div class="col-md-4 p-4">
+                <div class="card text-center p-3" style="height:38em;">
+
+
+                    <a href="{% url 'torqueapp:detail' i.id %}">
+                        <img class="card-img-top" src="{{i.img.url}}" alt="ph" style="height:100%;">
+
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}}</h5>
+                        <p class="card-text">{{i.disc}}</p>
+                        <a href="{% url 'torqueapp:detail' i.id %}" class="btn btn-secondary">View More</a>
+                    </div>
+                </div>
+            </div>
+           {% endfor %}
+
+
+
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<section class="bg-white p-5" id="packages-section">
+    <div class="container">
+        <h1 class="text-center">Packages</h1>
+        <div class="row">
+            <div class="col-md-4 p-4">
+                <div class="card text-center p-3">
+  <i class="fa fa-camera display-1 bg-secondary" aria-hidden="true" ></i>
+  <div class="card-body">
+    <h5 class="card-title">Wedding</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p><br>
+
+  </div>
+</div>
+            </div>
+
+            <div class="col-md-4 p-4">
+                <div class="card text-center p-3">
+  <i class="fa fa-camera display-1 bg-secondary" aria-hidden="true" ></i>
+  <div class="card-body">
+    <h5 class="card-title">Events</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p><br>
+
+  </div>
+</div>
+            </div>
+
+            <div class="col-md-4 p-4">
+                <div class="card text-center p-3">
+  <i class="fa fa-camera display-1 bg-secondary" aria-hidden="true" ></i>
+  <div class="card-body">
+    <h5 class="card-title">Birthday</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p><br>
+
+  </div>
+</div>
+            </div>
+            </div>
+        <div class="row pt-3">
+
+            <div class="col-md-4 p-4">
+                <div class="card text-center p-3">
+  <i class="fa fa-camera display-1 bg-secondary" aria-hidden="true" ></i>
+  <div class="card-body">
+    <h5 class="card-title">Modeling</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p><br>
+
+  </div>
+</div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</section>
+
+<section id="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    {% csrf_token %}
+                <div class="text-center">
+                    <h1>Contact</h1>
+                </div>
+  <div class="form-row">
+    <div class="form-group col-md-6 pl-3">
+      <label>Name</label>
+      <input type="text" name="name" class="form-control">
+    </div>
+    <div class="form-group col-md-6 pl-3">
+      <label>Place</label>
+      <input type="text" name="place" class="form-control">
+    </div>
+  </div>
+
+<div class="form-row">
+
+  <div class="form-group col-md-6 pl-3">
+    <label>Mobile</label>
+    <input type="text" name="mobile" class="form-control">
+  </div>
+  <div class="form-group col-md-6 pl-3">
+    <label>Email</label>
+    <input type="email" name="email" class="form-control">
+  </div>
+</div>
+                <div class="pl-3">
+  <input type="submit" class="btn btn-success">
+                    </div><br>
+</form>
+
+                </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
